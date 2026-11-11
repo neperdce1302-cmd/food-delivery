@@ -26,13 +26,12 @@ const allowedOrigins = [
 ].filter(Boolean)
 
 app.use(cors({
-    origin: (origin, callback) => {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true)
-        } else {
-            callback(new Error("Not allowed by CORS"))
-        }
-    }
+    origin: [
+        "https://food-delivery-admin-livid-one.vercel.app",
+        "https://food-delivery-gold-sigma.vercel.app"
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
 }))
 
 app.use(express.json())
